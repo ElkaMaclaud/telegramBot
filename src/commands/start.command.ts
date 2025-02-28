@@ -17,8 +17,9 @@ export class StartCommand extends Command {
             ]));
 
             ctx.reply("Выберите команду:", Markup.keyboard([
-                [Markup.button.text("Помощь")],
-                [Markup.button.text("Погода")]
+                [Markup.button.text("😊 Помощь 😊")],
+                [Markup.button.text("🌦️ Погода 🌦️")],
+                [Markup.button.text("🤓 Конвертёр 🤓")]
             ]).resize().oneTime());
         });
 
@@ -32,13 +33,17 @@ export class StartCommand extends Command {
             ctx.editMessageText("😒");
         });
 
-        this.bot.hears("Помощь", (ctx) => {
+        this.bot.hears("😊 Помощь 😊", (ctx) => {
             ctx.reply(HelpService.getHelpText());
         });
 
-        this.bot.hears("Погода", (ctx) => {
+        this.bot.hears("🌦️ Погода 🌦️", (ctx) => {
             ctx.reply("Пожалуйста, введите название вашего города.");
             ctx.session.isWaitingForCity = true
+        });
+
+        this.bot.hears("🤓 Конвертёр 🤓", (ctx) => {
+            ctx.reply("Пожалуйста, введите .");
         });
     }
 }
